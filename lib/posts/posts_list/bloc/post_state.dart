@@ -1,5 +1,5 @@
-import 'package:call_api_bloc/posts/models/models.dart';
-import 'package:equatable/equatable.dart';
+
+import 'package:call_api_bloc/models/post.dart';
 
 enum PostStatus {
   // khởi tạo
@@ -8,10 +8,12 @@ enum PostStatus {
   success,
   // thất bại
   failure,
+  // đang tải
+  loading,
 }
 
 //mỗi khi hành động dẫn tới sự kiện xảy ra, sẽ phải nhận về một phản hồi nào đó, phải đưa nó vào trạng thái. Vd: trạng thái đang tải (loading), đãi tải, lỗi
-class PostState extends Equatable {
+class PostState {
   const PostState({
     this.status = PostStatus.initial,
     this.posts = const <Post>[],
@@ -37,12 +39,4 @@ class PostState extends Equatable {
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
     );
   }
-
-  @override
-  String toString() {
-    return '''PostState { status: $status, hasReachedMax: $hasReachedMax, posts: ${posts.length} }''';
-  }
-
-  @override
-  List<Object> get props => [status, posts, hasReachedMax];
 }

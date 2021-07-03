@@ -1,4 +1,4 @@
-import 'package:call_api_bloc/api/api_const.dart';
+import 'api_const.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
