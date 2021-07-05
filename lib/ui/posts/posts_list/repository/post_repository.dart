@@ -1,11 +1,11 @@
-import '../../../commons/api/api.dart';
+import 'package:call_api_bloc/commons/api/api.dart';
 import 'package:call_api_bloc/models/post.dart';
 
-class PostDetailRepository {
-  requestDetailPost(id) async {
+class PostRepository {
+  fetchPosts() async {
     final client = RestClient(NetworkUtils.getDioClient());
     try {
-      Post post = await client.getDetailPosts(id);
+      List<Post> post = await client.getPosts();
       return post;
     } catch (error) {
       throw (error);

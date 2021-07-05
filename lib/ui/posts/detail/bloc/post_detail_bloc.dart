@@ -1,5 +1,5 @@
-import 'package:call_api_bloc/posts/detail/bloc/bloc.dart';
-import 'package:call_api_bloc/posts/detail/repository/post_detail_repository.dart';
+import 'package:call_api_bloc/ui/posts/detail/bloc/bloc.dart';
+import 'package:call_api_bloc/ui/posts/detail/repository/post_detail_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostDetailBloc extends Bloc<PostDetailEvent, PostDetailState> {

@@ -1,5 +1,5 @@
 import 'package:call_api_bloc/commons/utils/routes.dart';
-import 'package:call_api_bloc/posts/posts_list/bloc/bloc.dart';
+import 'package:call_api_bloc/ui/posts/posts_list/bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

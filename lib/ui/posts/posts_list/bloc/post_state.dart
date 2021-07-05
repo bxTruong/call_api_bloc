@@ -1,5 +1,5 @@
 
-import 'package:call_api_bloc/models/post.dart';
+import 'package:call_api_bloc/models/models.dart';
 
 enum PostStatus {
   // khởi tạo
