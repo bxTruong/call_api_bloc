@@ -10,7 +10,6 @@ class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl});
 
   final Dio _dio;
-
   String? baseUrl;
 
   @override
