@@ -1,5 +1,4 @@
 import 'package:call_api_bloc/ui/posts/posts.dart';
-import 'package:call_api_bloc/ui/tabbar/main_view/tab_bar_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TabBarPage(),
+      home: PostPage(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case Routes.POST_PAGE:
