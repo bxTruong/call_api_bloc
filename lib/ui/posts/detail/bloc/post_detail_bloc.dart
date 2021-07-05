@@ -7,7 +7,6 @@ class PostDetailBloc extends Bloc<PostDetailEvent, PostDetailState> {
 
   PostDetailBloc({required this.postDetailRepository})
       : super(PostDetailState());
-
   @override
   Stream<PostDetailState> mapEventToState(PostDetailEvent event) async* {
     if (event is GetPostDetail) {

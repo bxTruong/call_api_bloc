@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TabBarPage(),
+      home: PostPage(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case Routes.POST_PAGE:

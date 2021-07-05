@@ -10,7 +10,6 @@ class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl});
 
   final Dio _dio;
-
   String? baseUrl;
 
   @override
@@ -20,7 +19,7 @@ class _RestClient implements RestClient {
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Post>>(
         Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-            .compose(_dio.options, 'ui.posts',
+            .compose(_dio.options, 'posts',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -36,7 +35,7 @@ class _RestClient implements RestClient {
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<Post>(
         Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-            .compose(_dio.options, 'ui.posts/$id',
+            .compose(_dio.options, 'posts/$id',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Post.fromJson(_result.data!);
