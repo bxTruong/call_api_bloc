@@ -27,6 +27,7 @@ class _PostDetailPage extends State<PostDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return detailPostView();
   }
 
