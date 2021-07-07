@@ -1,6 +1,7 @@
 import 'package:call_api_bloc/ui/login/repository/repository.dart';
 import 'package:call_api_bloc/ui/login/view/login_view.dart';
 import 'package:call_api_bloc/ui/posts/posts.dart';
+import 'package:call_api_bloc/ui/posts/posts_list/view/post_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +31,9 @@ class MyApp extends StatelessWidget {
             );
           case Routes.HOME_PAGE:
             return MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) {
+                return PostPage();
+              },
             );
           case Routes.POST_DETAIL_PAGE:
             final args = settings.arguments;
