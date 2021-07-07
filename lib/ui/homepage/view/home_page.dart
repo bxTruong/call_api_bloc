@@ -1,9 +1,8 @@
 import 'package:call_api_bloc/ui/homepage/bloc/bloc.dart';
 import 'package:call_api_bloc/ui/homepage/bloc/state.dart';
-import 'package:call_api_bloc/ui/login/view/login_view.dart';
-import 'package:call_api_bloc/ui/posts/detail/view/post_detail_page.dart';
-import 'package:call_api_bloc/ui/posts/posts.dart';
 import 'package:call_api_bloc/ui/posts/posts_list/view/post_list_view.dart';
+import 'package:call_api_bloc/ui/second/view/second_list_view.dart';
+import 'package:call_api_bloc/ui/third/view/third_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,6 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   late NavBarBloc _navBarBloc = NavBarBloc();
 
   @override
@@ -23,17 +23,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey ,
       body: BlocBuilder(
         bloc: _navBarBloc,
         builder: (context, NavBarState state) {
           if (state is ShowFirstPage) {
-            return buildHomepage(state.title, 0);
+            return buildHomepage(state.title, state.itemIndex);
           }
           if (state is ShowSecondPage) {
-            return buildHomepage(state.title, 1);
+            return buildHomepage(state.title, state.itemIndex);
           }
           if (state is ShowThirdPage) {
-            return buildHomepage(state.title, 2);
+            return buildHomepage(state.title, state.itemIndex);
           }
           return Container();
         },
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
   buildHomepage(String title, int currentIndex) {
     print('INDEXXXXX $currentIndex');
     return Scaffold(
+      drawer: _drawer(),
       appBar: AppBar(
         title: Text(title),
       ),
@@ -52,16 +54,9 @@ class _HomePageState extends State<HomePage> {
           child: IndexedStack(
             index: currentIndex,
             children: [
-              LoginView(),
-              // Container(
-              //   child: Text('ABC'),
-              // ),
               PostPage(),
-              BlocProvider(
-                create: (context) => PostDetailBloc(
-                    postDetailRepository: PostDetailRepository()),
-                child: PostDetailPage(id: '1'),
-              ),
+              SecondListView(),
+              ThirdListView(),
             ],
           ),
         ),
@@ -73,6 +68,7 @@ class _HomePageState extends State<HomePage> {
           if (index == 1) _navBarBloc.add(NavBarItems.secondPage);
           if (index == 2) _navBarBloc.add(NavBarItems.thirdPage);
         },
+        // sao phải rắc rối thế này!!
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.looks_one),
@@ -87,6 +83,35 @@ class _HomePageState extends State<HomePage> {
             label: "PageThree",
           )
         ],
+      ),
+    );
+  }
+
+  _drawer() {
+    return SafeArea(
+      child: Drawer(
+        child: Column(
+          children: [
+            ListTile(
+              onTap: () {
+                _navBarBloc.add(NavBarItems.firstPage);
+              },
+              title: Text("PageOne"),
+            ),
+            ListTile(
+              onTap: () {
+                _navBarBloc.add(NavBarItems.secondPage);
+              },
+              title: Text("PageTwo"),
+            ),
+            ListTile(
+              onTap: () {
+                _navBarBloc.add(NavBarItems.thirdPage);
+              },
+              title: Text("PageThree"),
+            ),
+          ],
+        ),
       ),
     );
   }
