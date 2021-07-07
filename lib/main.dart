@@ -1,5 +1,5 @@
+import 'package:call_api_bloc/ui/homepage/view/home_page.dart';
 import 'package:call_api_bloc/ui/login/repository/repository.dart';
-import 'package:call_api_bloc/ui/login/view/login_view.dart';
 import 'package:call_api_bloc/ui/posts/posts.dart';
 import 'package:call_api_bloc/ui/posts/posts_list/view/post_list_view.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: RepositoryProvider(
         create: (context) => Repository(),
-        child: LoginView(),
+        child: HomePage(),
       ),
       onGenerateRoute: (settings) {
         switch (settings.name) {
