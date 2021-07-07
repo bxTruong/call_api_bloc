@@ -13,6 +13,7 @@ class _PostsList extends State<PostsList> {
 
   @override
   void initState() {
+    // init state add getPostListEvent
     _postBloc = context.read<PostBloc>();
     _postBloc.add(GetPostsListEvent());
     super.initState();

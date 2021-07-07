@@ -2,3 +2,4 @@
 abstract class PostEvent {}
 
 class GetPostsListEvent extends PostEvent {}
+//
