@@ -19,12 +19,14 @@ class BodyTab1 extends StatefulWidget {
   _BodyTab1 createState() => _BodyTab1();
 }
 
-class _BodyTab1 extends State<BodyTab1> {
+class _BodyTab1 extends State<BodyTab1> with AutomaticKeepAliveClientMixin {
   late Tab1Bloc tab1bloc;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   void initState() {
-    print('abacac');
     tab1bloc = context.read<Tab1Bloc>();
     tab1bloc.state.dropdownValue = 'Bánh mì - Kem';
     super.initState();
@@ -32,6 +34,7 @@ class _BodyTab1 extends State<BodyTab1> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Center(
         child: BlocBuilder<Tab1Bloc, Tab1State>(builder: (context, state) {
@@ -60,8 +63,8 @@ class _BodyTab1 extends State<BodyTab1> {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    color: Colors.white,
+                    Icons.keyboard_arrow_down_rounded,
+                    color: Colors.black,
                   ),
                 ),
                 iconSize: 24,
@@ -69,7 +72,8 @@ class _BodyTab1 extends State<BodyTab1> {
                 items: <String>[
                   'Bánh mì - Kem',
                   'Bánh mì - Sữa ông thọ',
-                  'Bánh mì - Pate'
+                  'Bánh mì - Pate',
+                  'Bánh mì Huỳnh Hoa'
                 ].map<DropdownMenuItem<String>>((e) {
                   return DropdownMenuItem(
                     value: e,
