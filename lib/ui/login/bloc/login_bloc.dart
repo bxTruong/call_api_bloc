@@ -27,5 +27,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield state.copyWith(status: SubmisstionFailed());
       }
     }
+    else if(event is UpdateViablePassword){
+      yield state.copyWith(isVisiblePassword: event.isVisiblePassword);
+    }
   }
 }

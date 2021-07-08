@@ -14,4 +14,8 @@ class LoginPasswordChange extends LoginEvent {
 
 class LoginSubmit extends LoginEvent {}
 
-class UpdateViablePassword extends LoginEvent {}
+class UpdateViablePassword extends LoginEvent {
+  late bool? isVisiblePassword;
+
+  UpdateViablePassword({this.isVisiblePassword});
+}

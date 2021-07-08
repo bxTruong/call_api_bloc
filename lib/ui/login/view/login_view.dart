@@ -60,18 +60,22 @@ class LoginView extends StatelessWidget {
   Widget _passWordFiled() {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) => TextFormField(
-        obscureText: true,
+        obscureText: state.isVisiblePassword,
         decoration: InputDecoration(
           hintText: "password",
           prefixIcon: Icon(
             Icons.lock_outline,
           ),
           suffixIcon: IconButton(
-            onPressed: () {
-
-            },
-            icon: Icon(
+            padding: EdgeInsets.zero,
+            splashRadius: 20,
+            onPressed: () =>context
+                .read<LoginBloc>()
+                .add(UpdateViablePassword(isVisiblePassword: !state.isVisiblePassword)),
+            icon: state.isVisiblePassword ? Icon(
               Icons.remove_red_eye_rounded,
+            ):Icon(
+              Icons.visibility_off_rounded,
             ),
           ),
         ),
