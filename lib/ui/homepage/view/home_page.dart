@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   buildHomepage(String title, int currentIndex) {
-    print('INDEXXXXX $currentIndex');
     return Scaffold(
       drawer: _drawer(),
       appBar: AppBar(
@@ -68,7 +67,6 @@ class _HomePageState extends State<HomePage> {
           if (index == 1) _navBarBloc.add(NavBarItems.secondPage);
           if (index == 2) _navBarBloc.add(NavBarItems.thirdPage);
         },
-        // sao phải rắc rối thế này!!
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.looks_one),
@@ -114,11 +112,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
   }
 }
