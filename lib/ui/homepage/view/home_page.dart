@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey ,
+      key: _scaffoldKey,
       body: BlocBuilder(
         bloc: _navBarBloc,
         builder: (context, NavBarState state) {
