@@ -66,6 +66,14 @@ class LoginView extends StatelessWidget {
           prefixIcon: Icon(
             Icons.lock_outline,
           ),
+          suffixIcon: IconButton(
+            onPressed: () {
+
+            },
+            icon: Icon(
+              Icons.remove_red_eye_rounded,
+            ),
+          ),
         ),
         validator: (value) =>
             state.isValidPassword ? null : "password to short",

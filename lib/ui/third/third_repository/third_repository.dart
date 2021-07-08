@@ -15,4 +15,7 @@ class ThirdRepository {
     print("bbbbb ${listThird.length}");
     return listThird;
   }
+  checkValue(){
+
+  }
 }
