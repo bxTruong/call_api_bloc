@@ -1,4 +1,3 @@
-import 'package:call_api_bloc/models/second_obj.dart';
 import 'package:call_api_bloc/models/third_obj.dart';
 
 class ThirdState {

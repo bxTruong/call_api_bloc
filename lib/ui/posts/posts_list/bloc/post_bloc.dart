@@ -11,21 +11,16 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   Stream<PostState> mapEventToState(PostEvent event) async* {
     if (event is GetPostsListEvent) {
       yield state.copyWith(status: PostStatus.loading);
-      yield await _mapPostFetchedToState(state);
-    }
-  }
-
-  Future<PostState> _mapPostFetchedToState(PostState state) async {
-    if (state.hasReachedMax) return state;
-    try {
-      var posts = await PostRepository().fetchPosts();
-      return state.copyWith(
-        status: PostStatus.success,
-        posts: posts,
-        hasReachedMax: false,
-      );
-    } on Exception {
-      return state.copyWith(status: PostStatus.failure);
+      try {
+        var posts = await PostRepository().fetchPosts();
+        yield state.copyWith(
+          status: PostStatus.success,
+          posts: posts,
+          hasReachedMax: false,
+        );
+      } on Exception {
+        yield state.copyWith(status: PostStatus.failure);
+      }
     }
   }
 }

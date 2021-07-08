@@ -7,15 +7,22 @@ class PostDetailBloc extends Bloc<PostDetailEvent, PostDetailState> {
 
   PostDetailBloc({required this.postDetailRepository})
       : super(PostDetailState());
+
   @override
   Stream<PostDetailState> mapEventToState(PostDetailEvent event) async* {
     if (event is GetPostDetail) {
       yield state.copyWith(status: PostsDetailStatus.loading);
-      var post = await PostDetailRepository().requestDetailPost(event.id);
-      yield state.copyWith(
-        status: PostsDetailStatus.success,
-        post: post,
-      );
+      try {
+        var post = await PostDetailRepository().requestDetailPost(event.id);
+        yield state.copyWith(
+          status: PostsDetailStatus.success,
+          post: post,
+        );
+      } catch (e) {
+        yield state.copyWith(
+          status: PostsDetailStatus.failure,
+        );
+      }
     }
   }
 }
