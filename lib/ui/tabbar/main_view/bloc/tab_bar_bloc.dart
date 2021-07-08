@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TabBarBloc extends Cubit<int> {
   TabBarBloc() : super(0);
-  PageController pagerController = PageController(initialPage: 1);
+  PageController pagerController = PageController(initialPage: 0);
 
   void updateTab(int tabIndex) {
     pagerController.animateToPage(

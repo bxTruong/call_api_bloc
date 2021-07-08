@@ -68,6 +68,7 @@ class _TabBarPage extends State<TabBarPage> {
                   ),
                   Expanded(
                     child: PageView(
+                      physics: NeverScrollableScrollPhysics(),
                       controller: context.read<TabBarBloc>().pagerController,
                       children: [
                         Tab1View(),
