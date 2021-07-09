@@ -17,7 +17,7 @@ class ThirdBloc extends Bloc<ThirdEvent, ThirdState> {
   }
 
   Future<ThirdState> mapSecondFetchedToState(ThirdState state) async {
-    var listThird = await thirdRepository.checkValue();
+    var listThird = await thirdRepository.addList();
     print("aaaaa ${listThird.length}");
     return state.copyWith(
       listThird: listThird,
